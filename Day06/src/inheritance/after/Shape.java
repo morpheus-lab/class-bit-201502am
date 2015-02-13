@@ -1,6 +1,6 @@
 package inheritance.after;
 
-public class Shape {
+abstract public class Shape {
 	
 	// 멤버 변수
 	protected double area;	// 넓이
@@ -8,17 +8,19 @@ public class Shape {
 	
 	// 생성자
 	public Shape() {
-		
+		System.out.println("Shape 생성자입니다~~");
+	}
+	
+	public Shape(double area) {
+		System.out.println("Shape 생성자(2)입니다~~");
+		this.area = area;
 	}
 	
 	// 멤버 메소드
-	public void makeArea() {	// 넓이 계산
-		
-	}
+	abstract public void makeArea();	// 넓이 계산
 	
-	public void makeCircum() {	// 둘레 길이 계산
-		
-	}
+	abstract public void makeCircum();	// 둘레 길이 계산
+	
 	
 	public void display() {		// 화면에 정보 출력
 		System.out.println("넓이: " + area

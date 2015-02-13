@@ -25,4 +25,33 @@ public class Rectangle extends Shape {
 		return height;
 	}
 	
+	public void makeAR() {	// 사각형의 넓이를 계산
+		area = width * height;
+	}
+	
+	@Override
+	public void makeArea() {	// 넓이 계산 기능을 재정의
+		area = width * height;
+	}
+
+	@Override
+	public void makeCircum() {
+		circum = (width + height) * 2;
+	}
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
