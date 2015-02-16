@@ -8,7 +8,7 @@ public class FinalVariable {
 									// 이후에 값을 변경할 수 없기 때문에..
 	
 	public void testFinalVar() {
-		finalInt = 20;	// The final field FinalVariable.finalInt cannot be assigned
+//		finalInt = 20;	// The final field FinalVariable.finalInt cannot be assigned
 	}
 	
 }
