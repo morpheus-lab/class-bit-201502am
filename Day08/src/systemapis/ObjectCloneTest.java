@@ -18,11 +18,14 @@ public class ObjectCloneTest {
 			// Deep Copy
 			A clone = (A) super.clone();
 			// arr 변수 deep copy
-			clone.arr = new int[arr.length];
+			clone.arr = arr.clone();
+			/*
+//			clone.arr = new int[arr.length];
 			// 배열 초기화
-			for (int i = 0; i < clone.arr.length; i++) {
-				clone.arr[i] = i + 1;
-			}
+//			for (int i = 0; i < clone.arr.length; i++) {
+//				clone.arr[i] = i + 1;
+//			}
+			*/
 			// b 변수 deep copy
 			clone.b = b.clone();
 			return clone;
