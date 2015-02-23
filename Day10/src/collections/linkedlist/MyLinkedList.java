@@ -4,6 +4,17 @@ public class MyLinkedList {
 	
 	MyNode head;	// 첫 번째 데이터 노드
 	
+	private MyNode getLastNode() {	// 마지막 노드 리턴하는 메소드
+		MyNode last = null;
+		if (head != null) {
+			last = head;
+			while (last.link != null) {
+				last = last.link;
+			}
+		}
+		return last;
+	}
+	
 	// add - 데이터를 추가하고 추가 성공여부를 boolean 값으로 리턴
 	public boolean add(Object e) {
 		
@@ -52,28 +63,49 @@ public class MyLinkedList {
 	}
 	
 	public boolean addLast(Object e) {	// 마지막 노드 뒤에 새 데이터 이어 붙이기
-		// TODO
+		// 새 노드 생성, 새 노드의 data를 e로
+		MyNode newNode = new MyNode();
+		newNode.data = e;
+		// 마지막 노드를 찾고
+		MyNode lastNode = null;
+		if (head != null) {
+			lastNode = head;
+			while (lastNode.link != null) {
+				lastNode = lastNode.link;
+			}
+			// while문을 빠져 나오면 lastNode는 마지막 노드(link가 null인 노드)를 가리킴
+			
+			// 마지막 노드의 link를 새 노드로
+			lastNode.link = newNode;
+		} else {	// head가 null이라면?
+			head = newNode;
+		}
 		return true;
 	}
 	
 	public int size() {	// 저장된 데이터 개수 반환
-		// TODO
-		return 0;
+		int size = 0;
+		if (head != null) {
+			MyNode node = head;
+			while (node != null) {
+				size++;
+				node = node.link;
+			}
+		}
+		return size;
 	}
 	
 	public Object element() {	// 첫 번째 데이터 반환
-		// TODO
-		return null;
+		return getFirst();
 	}
 	
 	public Object getFirst() {	// 첫 번째 데이터 반환
-		// TODO
-		return null;
+		return head == null ? null : head.data;
 	}
 	
 	public Object getLast() {	// 마지막 데이터 반환
-		// TODO
-		return null;
+		MyNode lastNode = getLastNode();
+		return lastNode == null ? null : lastNode.data;
 	}
 	
 	public Object get(int index) {	// index 인덱스 데이터 반환
