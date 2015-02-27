@@ -1,9 +1,14 @@
-package network.echo.server;
+package network.chat.server;
 
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.List;
 
-public class EchoServer {
+public class ChatServer {	// [tip] 이름바꾸기: 이름에 커서를 두고 <Alt>+<Shift>+R
+	
+	// 모든 ChatThread의 목록
+	static List<ChatThread> clients = new ArrayList<ChatThread>();
 	
 	public static void main(String[] args) throws Exception {
 		
@@ -18,7 +23,10 @@ public class EchoServer {
 			
 			// 여기에 도달하면 연결 수립이 이뤄진 경우
 			
-			EchoThread t = new EchoThread(sock);
+			ChatThread t = new ChatThread(sock);
+			synchronized (clients) {
+				clients.add(t);	// 클라이언트 목록에 담기
+			}
 			t.start();
 		}
 		
